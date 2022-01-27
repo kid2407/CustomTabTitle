@@ -7,6 +7,10 @@
         "active": {
             "name": "Active",
             "hint": "If the custom tab title should be applied"
+        },
+        "scene": {
+            "name": "Use scene name",
+            "hint": "When active, the name of the currently viewed scene will be used. Only works when the module is toggled active."
         }
     }
 }

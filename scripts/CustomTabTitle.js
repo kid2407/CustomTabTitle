@@ -2,7 +2,10 @@ export class CustomTabTitle {
     static MODULE_ID = 'custom-tab-title'
     static CONFIG_TEXT = 'text'
     static CONFIG_ACTIVE = 'active'
+    static CONFIG_SCENE = 'scene'
     static IS_ACTIVE = false
+    static USE_SCENE = false
+    static CURRENT_SCENE = null
     static CUSTOM_TEXT = null
     static ORIGINAL_TITLE = null
 
@@ -15,6 +18,18 @@ export class CustomTabTitle {
                 config:   true,
                 type:     Boolean,
                 default:  true,
+                onChange: async () => {
+                    await this.onUpdatedConfig()
+                }
+            })
+
+            game.settings.register(this.MODULE_ID, this.CONFIG_SCENE, {
+                name:     game.i18n.localize(`${this.MODULE_ID}.settings.${this.CONFIG_SCENE}.name`),
+                hint:     game.i18n.localize(`${this.MODULE_ID}.settings.${this.CONFIG_SCENE}.hint`),
+                scope:    "world",
+                config:   true,
+                type:     Boolean,
+                default:  false,
                 onChange: async () => {
                     await this.onUpdatedConfig()
                 }
@@ -38,6 +53,7 @@ export class CustomTabTitle {
 
     static async onUpdatedConfig() {
         this.IS_ACTIVE = game.settings.get(this.MODULE_ID, this.CONFIG_ACTIVE)
+        this.USE_SCENE = game.settings.get(this.MODULE_ID, this.CONFIG_SCENE)
         this.CUSTOM_TEXT = game.settings.get(this.MODULE_ID, this.CONFIG_TEXT)
 
         if (this.ORIGINAL_TITLE === null) {
@@ -45,7 +61,12 @@ export class CustomTabTitle {
         }
 
         if (this.IS_ACTIVE) {
-            document.title = this.CUSTOM_TEXT
+            if (this.USE_SCENE) {
+                document.title = game.scenes.viewed.data.navName
+            }
+            else {
+                document.title = this.CUSTOM_TEXT
+            }
         }
         else {
             document.title = this.ORIGINAL_TITLE
