@@ -2,9 +2,9 @@
     "name": "custom-tab-title",
     "title": "Custom Tab Title",
     "description": "A small module that allows you to set a custom tab title for Foundry.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "library": "false",
-    "manifestPlusVersion": "1.0.0",
+    "manifestPlusVersion": "1.0.1",
     "minimumCoreVersion": "0.8.9",
     "compatibleCoreVersion": "9",
     "authors": [

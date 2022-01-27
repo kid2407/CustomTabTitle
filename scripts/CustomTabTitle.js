@@ -62,7 +62,7 @@ export class CustomTabTitle {
 
         if (this.IS_ACTIVE) {
             if (this.USE_SCENE) {
-                document.title = game.scenes.viewed.data.navName
+                document.title = game.scenes.viewed.data.navName.length > 0 ? game.scenes.viewed.data.navName : game.scenes.viewed.name
             }
             else {
                 document.title = this.CUSTOM_TEXT
