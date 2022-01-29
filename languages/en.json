@@ -11,6 +11,10 @@
         "scene": {
             "name": "Use scene name",
             "hint": "When active, the name of the currently viewed scene will be used. Only works when the module is toggled active."
+        },
+        "world": {
+            "name": "Use world name",
+            "hint": "When active, the name of the currently active world is used. Only works when the module is toggled active."
         }
     }
 }
